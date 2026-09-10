@@ -1,0 +1,142 @@
+/* G1 «Мягкая горчица» (тёмная) — брендовая тема нейроштаба.
+   Источник цветов — team/agents/designer/overrides.md (единственный брендбук),
+   тот же G1, что уже используется на сайте (ui/tokens.css). База — копия
+   ayu-mirage-crisp-icons, поверх неё только якоря + акцент + текстовые тиры. */
+
+:root, .light, .dark {
+  color-scheme: dark;
+
+  /* якоря — бренд: фон и текст */
+  --canvas: #232B42;
+  --ink: #F1ECDD;
+
+  /* ПОВЕРХНОСТИ — лестница ОДНОГО брендового тона (H≈226°, тот же, что у canvas),
+     только разной светлоты. Было: color-mix(in oklch, var(--ink) 18%, var(--canvas)) —
+     подмешивали кремовый ink в тёмно-синий canvas. В oklch это интерполяция по
+     ОТТЕНКУ, а крем (H≈85°) и тёмно-синий (H≈264°) стоят почти противоположно: дуга
+     проходила через бирюзу, и карточка выезжала #3B4D5C — сине-зелёный сланец,
+     которого в брендбуке нет (замерено пипеткой на скрине «Machine updates»).
+     Поэтому здесь литералы одного тона, а не микс с ink. */
+  --sidebar: #1D2337;
+  --sidebar-border: #161B2A;
+  --sidebar-accent: #4A5C8A26;
+  --card: #2F3A5A;
+  --popover: #2A3350;
+  --surface-raised: #2F3A5A;
+  --surface-raised-solid: #2F3A5A;
+  --secondary: #4A5C8A2E;
+  --accent: #4A5C8A2E;
+  --muted: #4A5C8A26;
+  /* «утопленные» поверхности (блок-цитата, код) — та же лестница вниз от canvas,
+     гарантированно темнее его и в том же тоне. */
+  --surface-recessed: #191E2F;
+  --surface-recessed-solid: #191E2F;
+  --surface-recessed-soft-solid: #1D2337;
+  /* границы — тянутся ко второму акценту бренда (индиго #4A5C8A), а не к серому:
+     рамка остаётся в семье, но читается на любой из поверхностей выше. */
+  --border: #3A4767;
+  --border-hairline: #161B2A;
+  --border-seam: #161B2A;
+  --input: #4A5C8A;
+  --state-hover: #4A5C8A2E;
+  --state-active: #4A5C8A3D;
+  --surface-selected: #4A5C8A3D;
+
+  /* акцент — бренд: золото. Красит кнопки, фокус-ринг, выделение, и (ниже)
+     иконки-активности треда */
+  --primary: #E0AC33;
+  --primary-foreground: #20211C;
+
+  /* второй акцент бренда — индиго, на роль "один тинт в нейтральном тексте" */
+  --file-accent: #4A5C8A;
+
+  /* семантика — НЕ трогаем: несёт смысл (ошибка/успех/предупреждение),
+     бренд эти статусы не описывает */
+  --destructive: #ff6666;
+  --destructive-foreground: #ffffff;
+  --destructive-text: #ff6666;
+  --warning: #ffcc66;
+  --warning-text: #ffcc66;
+  --attention: #ffcc66;
+  --success: #87d96c;
+  --diff-added: #87d96c;
+  --diff-removed: #f27983;
+  --pr-merged: #dfbfff;
+
+  /* терминал — не трогаем, бренд ANSI-палитру не описывает */
+  --ansi-0: #0a0000;
+  --ansi-bg-fg-0: #ffffff;
+  --ansi-1: #f06b5c;
+  --ansi-bg-fg-1: #000000;
+  --ansi-2: #bfe76d;
+  --ansi-bg-fg-2: #000000;
+  --ansi-3: #e6b752;
+  --ansi-bg-fg-3: #000000;
+  --ansi-4: #3bbbf4;
+  --ansi-bg-fg-4: #000000;
+  --ansi-5: #d09ffd;
+  --ansi-bg-fg-5: #000000;
+  --ansi-6: #84ceb5;
+  --ansi-bg-fg-6: #000000;
+  --ansi-7: #d2d6dc;
+  --ansi-bg-fg-7: #000000;
+  --ansi-8: #707a8c;
+  --ansi-bg-fg-8: #000000;
+  --ansi-9: #f39184;
+  --ansi-bg-fg-9: #000000;
+  --ansi-10: #d5ff80;
+  --ansi-bg-fg-10: #000000;
+  --ansi-11: #ffcd66;
+  --ansi-bg-fg-11: #000000;
+  --ansi-12: #73d0ff;
+  --ansi-bg-fg-12: #000000;
+  --ansi-13: #dfbfff;
+  --ansi-bg-fg-13: #000000;
+  --ansi-14: #95e6cb;
+  --ansi-bg-fg-14: #000000;
+  --ansi-15: #e3e6ea;
+  --ansi-bg-fg-15: #000000;
+
+  /* текстовые тиры — якорь брендовый "служебный" цвет вместо чистого
+     ink/canvas микса, ближе к бренду, контраст всё равно тянется к --canvas */
+  --muted-foreground: #98A0BB;
+  --readback-foreground: color-mix(in oklch, #98A0BB 85%, var(--canvas));
+  --subtle-foreground: color-mix(in oklch, #98A0BB 72%, var(--canvas));
+}
+
+.bb-code-highlight,
+.light .bb-code-highlight,
+.dark .bb-code-highlight {
+  --sh-keyword: #ffa659;
+  --sh-string: #d5ff80;
+  --sh-comment: #6e7c8f;
+  --sh-class: #73d0ff;
+  --sh-entity: #ffcd66;
+  --sh-property: #5ccfe6;
+  --sh-jsxliterals: #5ccfe6;
+}
+
+/* Иконки статуса треда в сайдбаре (спиннер, терминал, план, цель, workflow) —
+   класс .text-muted-foreground/50. Красим в золото акцента, а не в
+   вторичный текст: это то, что владелец просил — акцентный цвет, заметный
+   на тёмном фоне, а не очередной серый. */
+.text-muted-foreground\/50,
+.text-muted-foreground\/75 {
+  color: var(--primary);
+}
+
+/* Точка-индикатор в свёрнутой группе тредов — фон .bg-muted-foreground/60,
+   отдельный от текстовых классов выше (это background-color, не color). */
+.bg-muted-foreground\/60 {
+  background-color: var(--primary);
+}
+
+/* Иконка "черновик/работает" (карандаш) — компонент с двумя состояниями:
+   в работе уже красится в Zq (золото), как черновик — в text-muted-foreground
+   (серый), то есть один и тот же значок скачет по цвету в зависимости от
+   состояния. Бьём по data-icon, а не по классу текста — иначе золотым
+   стал бы весь второстепенный текст интерфейса (подписи, даты и т.д.),
+   а не только эта иконка. */
+[data-icon="Edit"] {
+  color: var(--primary);
+}
